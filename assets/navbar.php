@@ -44,60 +44,9 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-2 d-flex align-items-center">
-                                        
-                                        <div class="header-cart">
-                                            <a href=""><i class="fa fa-bell"></i><span>3</span></a>
-                                            <!-- minicart -->
-                                            <div class="minicart-box" id="minicart-box">
-                                                <div class="minicart-product-wrapper">
-                                                    <div class="single-minicart-product">
-                                                        <div class="single-minicart-product__image">
-                                                            <a href="cart.html">
-                                                                <img src="assets/images/product/product-1.jpg" class="img-fluid" alt="">
-                                                            </a>
-                                                        </div>
-                                                        <div class="single-minicart-product__content">
-                                                            <a href="#" class="close-icon"><i class="fa fa-times"></i></a>
-                                                            <a href="cart.html" class="title">Fiberglass Stepladder</a>
-                                                            <p class="quantity">1 x <span class="price">$ 80.00</span></p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="single-minicart-product">
-                                                        <div class="single-minicart-product__image">
-                                                            <a href="cart.html">
-                                                                <img src="assets/images/product/product-2.jpg" class="img-fluid" alt="">
-                                                            </a>
-                                                        </div>
-                                                        <div class="single-minicart-product__content">
-                                                            <a href="#" class="close-icon"><i class="fa fa-times"></i></a>
-                                                            <a href="cart.html" class="title">Lithium Ion XR Brushless Blower</a>
-                                                            <p class="quantity">1 x <span class="price">$ 90.00</span></p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="single-minicart-product">
-                                                        <div class="single-minicart-product__image">
-                                                            <a href="cart.html">
-                                                                <img src="assets/images/product/product-3.jpg" class="img-fluid" alt="">
-                                                            </a>
-                                                        </div>
-                                                        <div class="single-minicart-product__content">
-                                                            <a href="#" class="close-icon"><i class="fa fa-times"></i></a>
-                                                            <a href="cart.html" class="title">Small Trigger Clamp</a>
-                                                            <p class="quantity">1 x <span class="price">$ 70.00</span></p>
-                                                        </div>
-                                                    </div>
+                                   
+<!-- deleted the notification bell icon which led to the cart section   updated at:- aman_raj 18.46 26th april 2021 -->
 
-
-                                                </div>
-                                                <p class="minicart-calculations">Total: <span class="value">$1100.00</span></p>
-                                                <div class="minicart-buttons">
-                                                    <a href="cart.html" class="minicart-link btn">VIEW CART</a>
-                                                    <a href="checkout.html" class="minicart-link btn">CHECKOUT</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
                             <!--Header Middle Right End-->
