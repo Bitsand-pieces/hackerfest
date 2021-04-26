@@ -25,8 +25,7 @@ if($_SESSION['is_logged_in']==true){
             <div class="row align-items-top">
                 <div class="col-md-2 profile-picture" >
                    
-                    <img style="margin-top:70px; border-radius:150%; height:200px; width:200px;" src="assets/images/author/author-1.jpg" alt="">
-                    <p class="text-center"><a href="" ><span class="fa fa-edit"> </span> UPLOAD PROFILE PIC</a> </p>
+                    <img style="margin-top:70px; border-radius:150%; height:200px; width:200px;" src="assets/images/profilePicture/avtar.png" alt="">
                     <p  class="text-center"><a href="" ><span class="fa fa-edit"> </span> EDIT PROFILE </a> </p>
                     <p  class="text-center"><a href="" ><span class="fa fa-edit"> </span> CHANGE PASSWORD </a> </p>
                 </div>
@@ -99,6 +98,7 @@ if($_SESSION['is_logged_in']==true){
                 </div>
                 <?php }else{
                     if(isset($_POST['uploadDetail_btn'])){
+                        $userId=$_SESSION['userId'];
                         $alt_phn_no=$_POST['alt_phn_no'];
                         $pinCode=$_POST['pinCode'];
                         $city=$_POST['city'];
@@ -107,7 +107,7 @@ if($_SESSION['is_logged_in']==true){
                         $area=$_POST['area'];
                         $landMark=$_POST['landMark'];
 
-                        $in="INSERT INTO `userdetails`(`alt_phn_no`, `pincode`, `city`, `state`, `address`, `area`, `landMark`) VALUES ('".$alt_phn_no."','".$pinCode."','".$city."','".$state."','".$address."','".$area."','".$landMark."')";
+                        $in="INSERT INTO `userdetails`(`userId`, `alt_phn_no`, `pincode`, `city`, `state`, `address`, `area`, `landMark`) VALUES ('".$userId."','".$alt_phn_no."','".$pinCode."','".$city."','".$state."','".$address."','".$area."','".$landMark."')";
                         if($qu=mysqli_query($conn,$in)){
                             echo "<script>alert('Profile Updated Successfully'); window.location='profile.php';</script>";
                         }
@@ -117,6 +117,13 @@ if($_SESSION['is_logged_in']==true){
                 <h3 style="text-align:center; padding:5px; margin-top:50px;">Complete Your Profile</h3>
                 <form action="" method="post">
                 <div class="row form-group">
+                    <div class="col-sm-12">
+                    <label for="profilePic">Upload Profile Picture</label>
+                    <div class="custom-file">
+                        <input type="file" class="custom-file-input" id="customFile">
+                        <label class="custom-file-label" for="customFile">Choose file</label>
+                    </div>
+                    </div>
                     <div class="col-sm-6">
                     <label for="alt_phn_no">Alternate Phone Number (optional)</label>
                     <input type="tel" class="form-control" name="alt_phn_no" id="alt_phn_no" maxlength="10" >

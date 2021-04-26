@@ -48,7 +48,7 @@
 <!-- deleted the notification bell icon which led to the cart section   updated at:- aman_raj 18.46 26th april 2021 -->
 
 
-<div>   <img src="assets/images/author/author-1.jpg" alt="" srcset="" id="head_pic" style="border-radius:150%;"></div> 
+<div style="height:60px; width:60px;">   <img src="assets/images/profilePicture/avtar.png" alt="" srcset="" id="head_pic" style="border-radius:150%;"></div> 
 
                                 </div>
                             </div>
