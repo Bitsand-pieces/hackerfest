@@ -46,10 +46,21 @@
                                     </div>
                                    
 <!-- deleted the notification bell icon which led to the cart section   updated at:- aman_raj 18.46 26th april 2021 -->
+<?php
+$select="SELECT * FROM `userdetails` WHERE userId='".$_SESSION['userId']."'";
+                $query=mysqli_query($conn,$select);
+                $no=mysqli_num_rows($query);
+                $rw=mysqli_fetch_assoc($query);
+                $path="assets/images/profilePicture/".$rw['profilePic'];
 
+if($no>0){
+?>
+<div style="height:60px; width:60px;">   <img src="<?php echo $path;?>" alt="" srcset="" id="head_pic" style="border-radius:150%;"></div> 
 
-<div style="height:60px; width:60px;">   <img src="assets/images/profilePicture/avtar.png" alt="" srcset="" id="head_pic" style="border-radius:150%;"></div> 
+<?php }else{?>
+    <div style="height:60px; width:60px;">   <img src="assets/images/profilePicture/avtar.png" alt="" srcset="" id="head_pic" style="border-radius:150%;"></div> 
 
+<?php } ?>
                                 </div>
                             </div>
                             <!--Header Middle Right End-->

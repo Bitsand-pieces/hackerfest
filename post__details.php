@@ -19,44 +19,57 @@ if ($_SESSION['is_logged_in'] == true) {
     $sql = "SELECT * FROM posts WHERE id=id ORDER BY id desc";
     $res = mysqli_query($conn, $sql);
 
-?>
-<div class="row">
 
+?>
+<div class="row" style="justify-content:center;align-items: center; ">
 
     <?php
         while ($row = mysqli_fetch_assoc($res)) {
+            if ($_GET['id'] == $row['id']) {
+
+
         ?>
-    <div class="column">
+    <div class="column" style="width: 90%;">
         <div class="card">
             <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
                 <img src="<?php echo PRODUCT_IMAGE_SITE_PATH . $row['image'] ?>" class="img-fluid"
-                    style="height: 300px;object-fit: contain;" />
+                    style="height: 200px;object-fit: contain;" />
 
             </div>
             <div class="card-body">
-                <h4 class="card-title"><?php echo $row['food_name'] ?></h4>
 
+                <h4 class="card-title" style="color:green;font-weight:bold; font-size:20px">
+                    <?php echo $row['food_name'] ?></h4>
+                <br><br>
                 <div class="card-text">
+                    <div style="font-size:19px;color:red;"><u>Short Details</u></div><br>
                     <?php echo $row['short_description'] ?>
-                    <p><a href="post__details.php?id=<?php echo $row['id'] ?>">more details..</a></p>
+                </div><br><br>
+                <div class="card-text">
+                    <div style="font-size:19px;color:red;"><u>Complete Food Details</u></div><br>
+                    <?php echo $row['description'] ?>
                 </div>
-                <h4>Name : <?php echo $row['name'] ?></h4>
-                <p><b>Email :</b> <?php echo $row['email']  ?></p>
-                <p><b>Mobile no :</b> <?php echo $row['number'] ?></p>
-                <p><b>Address :</b> <?php echo $row['address'] ?>,
+                <h4><b style="color: red;">Name :</b> <?php echo $row['name'] ?></h4>
+                <p><b style="color: red;">Email :</b> <?php echo $row['email']  ?></p>
+                <p><b style="color: red;">Mobile no :</b> <?php echo $row['number'] ?></p>
+                <p><b style="color: red;">Address :</b> <?php echo $row['address'] ?>,
                     <?php echo $row['city'] ?><br><?php echo $row['state'] ?>, <?php echo $row['zip'] ?>
                 </p>
 
                 <?php echo "<a href='?type=delete&id=" . $row['id'] . "' class='btn btn-primary'>Delete</a>&nbsp;&nbsp;";
-                        echo "<a href='post.php?id=" . $row['id'] . "' class='btn btn-secondary'>Edit</a>";
-                        ?>
+                            echo "<a href='post.php?id=" . $row['id'] . "' class='btn btn-secondary'>Edit</a>";
+                            ?>
 
             </div>
         </div>
     </div>
-    <?php } ?>
-
+    <?php }
+        } ?>
 </div>
+
+
+
+
 
 <?php
     include('assets/footer.php'); ?>
