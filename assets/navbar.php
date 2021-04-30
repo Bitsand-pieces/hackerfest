@@ -36,8 +36,8 @@
                                                             <i class="fa fa-home"></i>
                                                         </div>
                                                         <div class="content">
-                                                            <h3>14 Tottenham Court Road</h3>
-                                                            <span>London, England.</span>
+                                                            <h3>BCE Patna</h3>
+                                                            <span>Bihar, Inida.</span>
                                                         </div>
                                                     </div>
                                                 </div>

@@ -238,7 +238,7 @@ if ($_SESSION['is_logged_in'] == true) {
                 <label class="col-md-4 control-label">Upload Food Image</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-camera"></i></span>
                         <input name="image" class="form-control" type="file" <?php echo $image_required; ?>>
                     </div>
                 </div>
@@ -248,7 +248,7 @@ if ($_SESSION['is_logged_in'] == true) {
                 <label class="col-md-4 control-label">Food Name Or Title</label>
                 <div class="col-md-4 inputGroupContainer">
                     <div class="input-group">
-                        <span class="input-group-addon"><i class="glyphicon glyphicon-home"></i></span>
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-apple"></i></span>
                         <input name="food_name" placeholder="Food Name Or Title" class="form-control" type="text"
                             value="<?php echo $food_name; ?>">
                     </div>
