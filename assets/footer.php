@@ -17,7 +17,7 @@
             </div>
             <div class="col-md-3">
                 <div class="cta-btn text-center">
-                    <a href="#" class="btn"> GET QUICK QUOTE <i class="fa fa-angle-double-right"></i></a>
+                    <a href="home.php" class="btn"> GET QUICK QUOTE <i class="fa fa-angle-double-right"></i></a>
                 </div>
             </div>
         </div>
@@ -38,8 +38,7 @@
                 <!--Footer Widget start-->
                 <div class="footer-widget col-lg-4 col-md-6 col-sm-6 col-12 mb-30">
                     <div class="footer-logo">
-                        <a href="index.html"><img src="assets/images/logo.png" alt=""></a>  <!-- get a white background logo for better visiblity -->
-                    </div>
+                            <a href="" ><h3 style="color:white;"> Bits & Pieces</h3>     </a>               </div>
                     <p> Our mission is to provide the best renovation service at an reasonable price without sacrificing
                         quality. You will be satisfy with our work knowing we take the necessary steps to meet your
                         needs and get the job done right</p>
