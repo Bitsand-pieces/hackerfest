@@ -4,6 +4,23 @@ if($_SESSION['is_logged_in']==true){
     include('assets/header.php');
     include('assets/navbar.php');
 
+    if(isset($_POST['uploadblog_btn'])){
+      $userID=$_SESSION['userId'];
+      $blogImg=$_FILES['blogImg']['name'];
+      $blogTitle=$_POST['blogTitle'];
+      $blogMsg=$_POST['blogMsg'];
+
+    $in=  "INSERT INTO `blogs`(`user_id`, `title`, `image`, `msg`) VALUES ('".$userID."','".$blogTitle."','".$blogImg."','".$blogMsg."')";
+    $query=mysqli_query($conn,$in);
+    if($query){
+      if(move_uploaded_file($_FILES["blogImg"]["tmp_name"],"assets/images/blog/".$blogImg));
+
+      echo "<script>alert('blog Uploaded successfully!!'); window.location='blog.php';</script>";
+  }else{
+      echo "<script>alert('can't upload blog!!retry...');window.location='blog.php';</script>";
+  }
+    }
+
 
 ?>
 
@@ -35,18 +52,19 @@ if($_SESSION['is_logged_in']==true){
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      <form action="" method="post" enctype="multipart/form-data">
+
       <div class="modal-body">
-      <form>
           <div class="form-group">
             <label for="recipient-name" class="col-form-label">Image:</label>
 
             <div class="input-group mb-3">
-  <div class="input-group-prepend">
+              <div class="input-group-prepend">
     <span class="input-group-text">Upload</span>
   </div>
   <div class="custom-file">
-    <input type="file" class="custom-file-input" id="inputGroupFile01">
-    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+    <input type="file" class="custom-file-input" id="blogImg" name="blogImg">
+    <label class="custom-file-label" for="blogImg">Choose file</label>
   </div>
 </div>
 
@@ -54,19 +72,20 @@ if($_SESSION['is_logged_in']==true){
 
           </div>
           <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Title:</label>
-            <input type="text" class="form-control" id="recipient-name">
+            <label for="blogTitle" class="col-form-label">Title:</label>
+            <input type="text" class="form-control" id="blogTitle" name="blogTitle">
           </div>
           <div class="form-group">
-            <label for="message-text" class="col-form-label">Message:</label>
-            <textarea class="form-control" id="message-text" rows="10"></textarea>
+            <label for="blogMsg" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="blogMsg" name="blogMsg" rows="10"></textarea>
           </div>
-        </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">UPLOAD BLOG</button>
+        <button type="submit" class="btn btn-primary" name="uploadblog_btn">UPLOAD BLOG</button>
       </div>
+      </form>
+
     </div>
   </div>
 </div>
@@ -74,32 +93,40 @@ if($_SESSION['is_logged_in']==true){
 
 
 
+
         <!--Blog section start-->
-        <div class="blog-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-45 pb-lg-25 pb-md-15 pb-sm-5 pb-xs-15">
+        <div style="background-color:#F2F3F4;" class="blog-section section pt-100 pt-lg-80 pt-md-70 pt-sm-60 pt-xs-50 pb-45 pb-lg-25 pb-md-15 pb-sm-5 pb-xs-15">
             <div class="container">
-            <a href="" data-toggle="modal" data-target="#exampleModal"><h2 class="pb-3"><i class="fa fa-plus"></i> Add Blogs </h2></a>
+            <a href="" data-toggle="modal" data-target="#exampleModal"><h2 class="pb-3"><i class="fa fa-plus"></i> Post Blogs </h2></a>
 
-
+            
                 <div class="row">
+                <?php $sel="SELECT * FROM `blogs` ORDER BY `blogs`.`id` DESC";
+            $q=mysqli_query($conn,$sel);
+            
+
+            while($row=mysqli_fetch_array($q)){
+              $path="assets/images/blog/".$row['image'];
+              ?>
 
                     <!-- Single Blog Start -->
                     <div class="blog mb-30 mb-xs-10 col-lg-3 col-md-6 col-sm-6">
                         <div class="blog-inner heading-color">
                             <div class="blog-image">
-                                <a href="blog-details.html" class="image"><img src="assets/images/blog/blog-8.jpg" alt=""></a>
+                                <a href="blog_details.php?id=<?php echo $row['id'];?>" class="image"><img src="<?php echo $path;?>" alt="" height="250px"></a>
                                 <ul class="meta theme-color">
-                                    <li><i class="fa fa-clock-o"></i><a href="#">April 17, 2015</a></li>
-                                    <li><i class="fa fa-comments"></i>0</li>
+                                    <li><i class="fa fa-clock-o"></i><a href="#"><?php echo $row['createdat'];?></a></li>
                                 </ul>
                             </div>
                             <div class="content">
-                                <h3 class="title"><a href="blog-details.html">How to Install Plumbing in a New Home</a></h3>
+                                <h3 class="title"><a href="blog_details.php?id=<?php echo $row['id'];?>"><?php echo $row['title'];?></a></h3>
                             </div>
                         </div>
                     </div>
                     <!-- Single Blog End -->
+                    <?php } ?>
                 </div>
-
+             
             </div>
         </div>
         <!--Blog section end-->

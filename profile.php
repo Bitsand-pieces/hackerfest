@@ -22,15 +22,21 @@ if($_SESSION['is_logged_in']==true){
 
         
 
-        $update="UPDATE `userdetails` SET `profilePic`=$editProfilePic,`alt_phn_no`=$edit_alt_phn_no,`pincode`=$eidtpinCode,`city`=$editcity,`state`=$editstate,`address`=$editaddress,`area`=$editarea,`landMark`=$editlandMark, WHERE userId='".$_SESSION['userId']."'";
+        $selupdate="SELECT * FROM `userdetails` WHERE userId='".$_SESSION['userId']."'";
         
-        if(mysqli_num_rows(mysqli_query($conn,$update))){
-            if(move_uploaded_file($_FILES["editProfilePic"]["tmp_name"],"assets/images/profilePicture/".$profilePIC));
+        if(mysqli_num_rows(mysqli_query($conn,$selupdate))){
+            
+            $update="UPDATE `userdetails` SET `profilePic`=$editProfilePic,`alt_phn_no`=$edit_alt_phn_no,`pincode`=$eidtpinCode,`city`=$editcity,`state`=$editstate,`address`=$editaddress,`area`=$editarea,`landMark`=$editlandMark, WHERE userId='".$_SESSION['userId']."'";
 
-            echo "<script>alert('updated successfully!!')</script>";
+            if(mysqli_query($conn,$update)){
+                if(move_uploaded_file($_FILES["editProfilePic"]["tmp_name"],"assets/images/profilePicture/".$editProfilePic));
+
+            echo "<script>alert('updated successfully!!'); window.location='profile.php';</script>";
         }else{
             echo "<script>alert('can't update profile!!retry...')</script>";
         }
+            }
+            
 
     }
 

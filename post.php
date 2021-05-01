@@ -1,3 +1,5 @@
+
+
 <?php
 include('assets/dbConfig.php');
 if ($_SESSION['is_logged_in'] == true) {
@@ -43,8 +45,11 @@ if ($_SESSION['is_logged_in'] == true) {
             $food_name = $row['food_name'];
             $short_description = $row['short_description'];
         } else {
-            header('location:home.php');
-            die();
+?>
+<script>
+window.location.href = "home.php";
+</script>
+<?php
         }
     }
 
@@ -120,22 +125,39 @@ if ($_SESSION['is_logged_in'] == true) {
                 mysqli_query($conn, "INSERT INTO posts(name,state,city,zip,number,short_description,description,email,address,food_name,image)
          VALUES('$name','$state','$city','$zip','$number','$short_description','$description','$email','$address','$food_name','$image')");
             }
-            header('location:home.php');
-            die();
+        ?>
+<script>
+window.location.href = "home.php";
+</script>
+<?php
         }
     }
 
+    ?>
 
-
-?>
-
-<div class="container">
+  
+<div class="">
 
     <form class="well form-horizontal" action=" " method="post" id="contact_form" enctype="multipart/form-data">
         <fieldset>
 
             <!-- Form Name -->
-            <legend>Post </legend>
+                 
+   <!-- Breadcrumb Section Start -->
+   <div class="breadcrumb-section section bg-black pt-75 pb-75 pt-sm-55 pb-sm-55 pt-xs-45 pb-xs-45">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-md-12">
+                        <div class="breadcrumb-title">
+                            <h2>Posts</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Breadcrumb Section End -->
+
+          
 
             <!-- Text input-->
 
@@ -265,7 +287,7 @@ if ($_SESSION['is_logged_in'] == true) {
                         <span class="input-group-addon"><i class="glyphicon glyphicon-pencil"></i></span>
                         <textarea class="form-control" name="short_description"
                             placeholder="Food Description(not more than 100 words)..."
-                            maxlength="300"><?php echo $description; ?></textarea>
+                            maxlength="500"><?php echo $short_description; ?></textarea>
                     </div>
                 </div>
             </div>
